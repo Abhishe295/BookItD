@@ -13,7 +13,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5500;
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL, // Allow only this origin
+  credentials: true      // If you're using cookies or sessions
+}));
 app.use(express.json());
 
 app.use('/experiences', experienceRouter);
