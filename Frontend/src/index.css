@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* minimal spacing scale adjustments, you can extend later */
+body {
+  @apply bg-gray-50 text-gray-800;
+}
