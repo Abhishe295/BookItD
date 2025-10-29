@@ -9,7 +9,9 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "outDir": "dist", // ✅ compiled JS files go here
+    "rootDir": "src",
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"]
+  "include": ["src", "vite-env.d.ts"]
 }
