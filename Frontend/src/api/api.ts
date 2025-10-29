@@ -1,6 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
+const isLocal = window.location.hostname === 'localhost';
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL as string, // ✅ environment variable from .env
+  baseURL: isLocal
+    ? 'http://localhost:5500'
+    : 'https://bookitd.onrender.com',
   headers: { 'Content-Type': 'application/json' },
 });

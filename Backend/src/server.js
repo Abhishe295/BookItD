@@ -13,10 +13,23 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5500;
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://book-it-d.vercel.app'
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL, // Allow only this origin
-  credentials: true      // If you're using cookies or sessions
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
+
 app.use(express.json());
 
 app.use('/experiences', experienceRouter);
